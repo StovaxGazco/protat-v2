@@ -26,8 +26,7 @@
       <li><a href="#collection" class="nav__link">Produits</a></li>
       <li><a href="#products" class="nav__link">Installations</a></li>
       <li><a href="#team" class="nav__link">Équipe</a></li>
-      <li><a href="#showroom" class="nav__link">Showroom</a></li>
-      <li><a href="#contact" class="nav__link nav__link--cta">Nous Contacter</a></li>
+      <li><a href="#showroom" class="nav__link nav__link--cta">Showroom & Contact</a></li>
     </ul>
     <button class="nav__burger" id="nav-burger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -41,8 +40,7 @@
       <li><a href="#collection">Produits</a></li>
       <li><a href="#products">Installations</a></li>
       <li><a href="#team">Équipe</a></li>
-      <li><a href="#showroom">Showroom</a></li>
-      <li><a href="#contact">Nous Contacter</a></li>
+      <li><a href="#showroom">Showroom & Contact</a></li>
     </ul>
   </div>
 
@@ -523,7 +521,7 @@ intègrent les meilleures techniques de Stovax.</p>
 
 
 
-  <!-- ═══ SHOWROOM / LOCATION ═══ -->
+  <!-- ═══ SHOWROOM & CONTACT ═══ -->
   <section class="showroom-section" id="showroom">
     <div class="showroom__bg">
       <img
@@ -536,7 +534,7 @@ intègrent les meilleures techniques de Stovax.</p>
     <div class="showroom__content">
       <div class="showroom__text reveal-up">
         <div class="section-label section-label--light">Nous Trouver</div>
-        <h2 class="showroom__title">Visitez Notre<br/><em>Showroom</em></h2>
+        <h2 class="showroom__title">Visitez Notre Showroom<br/><em>& Parlons de votre projet</em></h2>
         <p class="showroom__body">Venez découvrir notre sélection en situation réelle. Nos conseillers vous accueillent du lundi au samedi pour vous guider vers l'appareil idéal.</p>
         <div class="showroom__details">
           <div class="showroom__detail">
@@ -556,8 +554,8 @@ intègrent les meilleures techniques de Stovax.</p>
           <div class="showroom__detail">
             <svg class="showroom__detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
             <div>
-              <strong>+33 (0)4 XX XX XX XX</strong><br/>
-              contact@protat-poeles.fr
+              <strong><a href="tel:+33400000000" style="color: inherit; text-decoration: none;">+33 (0)4 XX XX XX XX</a></strong><br/>
+              <a href="mailto:contact@protat-poeles.fr" style="color: inherit; text-decoration: none;">contact@protat-poeles.fr</a>
             </div>
           </div>
         </div>
@@ -573,63 +571,6 @@ intègrent les meilleures techniques de Stovax.</p>
           referrerpolicy="no-referrer-when-downgrade"
           title="Localisation Protat Pommiers Anse Beaujolais"
         ></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ CONTACT ═══ -->
-  <section class="contact-section reveal-section" id="contact">
-    <div class="contact__inner">
-      <div class="contact__left reveal-up">
-        <div class="section-label">Contact</div>
-        <h2 class="contact__title">Parlons de<br/><em>votre projet</em></h2>
-        <p class="contact__body">Que vous souhaitiez un devis, un conseil ou simplement découvrir notre showroom, notre équipe est à votre écoute.</p>
-        <div class="contact__links">
-          <a href="tel:+33400000000" class="contact__link">
-            <span class="contact__link-label">Téléphone</span>
-            <span class="contact__link-value">+33 (0)4 XX XX XX XX</span>
-          </a>
-          <a href="mailto:contact@protat-poeles.fr" class="contact__link">
-            <span class="contact__link-label">Email</span>
-            <span class="contact__link-value">contact@protat-poeles.fr</span>
-          </a>
-        </div>
-      </div>
-      <div class="contact__right reveal-right">
-        <form class="contact-form" id="contact-form" novalidate>
-          <div class="form-group">
-            <label for="name" class="form-label">Nom complet</label>
-            <input type="text" id="name" name="name" class="form-input" placeholder="Jean Dupont" required />
-          </div>
-          <div class="form-group">
-            <label for="email" class="form-label">Adresse email</label>
-            <input type="email" id="email" name="email" class="form-input" placeholder="jean@exemple.fr" required />
-          </div>
-          <div class="form-group">
-            <label for="phone" class="form-label">Téléphone <span class="form-optional">(optionnel)</span></label>
-            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+33 6 XX XX XX XX" />
-          </div>
-          <div class="form-group">
-            <label for="subject" class="form-label">Sujet</label>
-            <select id="subject" name="subject" class="form-select">
-              <option value="">Choisir un sujet…</option>
-              <option value="devis">Demande de devis</option>
-              <option value="rdv">Prendre rendez-vous</option>
-              <option value="conseil">Conseil produit</option>
-              <option value="sav">Service après-vente</option>
-              <option value="autre">Autre</option>
-            </select>
-          </div>
-          <div class="form-group form-group--full">
-            <label for="message" class="form-label">Message</label>
-            <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="Décrivez votre projet ou votre demande…" required></textarea>
-          </div>
-          <button type="submit" class="btn btn--primary btn--large btn--full" id="form-submit">
-            Envoyer le Message
-            <svg class="btn__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          </button>
-          <p class="form-success" id="form-success" style="display:none">✓ Message envoyé ! Nous vous répondrons dans les 24h.</p>
-        </form>
       </div>
     </div>
   </section>

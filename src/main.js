@@ -79,24 +79,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// ── Contact form ──
-const form = document.getElementById('contact-form');
-const successMsg = document.getElementById('form-success');
-const submitBtn = document.getElementById('form-submit');
-
-form?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-  submitBtn.textContent = 'Envoi en cours…';
-  submitBtn.disabled = true;
-  await new Promise((r) => setTimeout(r, 1200));
-  submitBtn.style.display = 'none';
-  successMsg.style.display = 'block';
-  form.reset();
-});
 // ── Ambient video mute toggle ──
 const ambientVideoElement = document.querySelector('.video-ambient__video');
 const muteBtn = document.getElementById('ambient-mute-btn');
