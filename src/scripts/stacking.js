@@ -33,7 +33,8 @@ export function initStackingCards() {
     });
 
     // ── Pin the container for (N-1) screens of scroll ──
-    const scrollDistance = window.innerHeight * (numCards - 1);
+    // Reduced from 1.0 to 0.6 viewport heights per card for faster scrolling
+    const scrollDistance = window.innerHeight * (numCards - 1) * 0.6;
 
     const mainTl = gsap.timeline({
         scrollTrigger: {
