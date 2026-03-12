@@ -1505,14 +1505,6 @@ em {
   align-items: start;
 }
 
-.why__left {
-  grid-column: 2;
-}
-
-.why__right {
-  grid-column: 1;
-}
-
 .why__title {
   color: var(--color-text);
   margin-bottom: 3rem;
@@ -2027,11 +2019,6 @@ em {
   .why__inner {
     grid-template-columns: 1fr;
     gap: 3rem;
-  }
-
-  .why__left,
-  .why__right {
-    grid-column: auto;
   }
 
   .why__right {
