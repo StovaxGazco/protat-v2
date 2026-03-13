@@ -28,6 +28,15 @@ export function initStackingCards(selector = '.stack-card') {
 
     if (!container || !numCards) return;
 
+    // ── Clear all GSAP properties from cards ──
+    cards.forEach(card => {
+        gsap.set(card, { clearProps: 'all' });
+        const cardBody = card.querySelector('.stack-card__body');
+        if (cardBody) {
+            gsap.set(cardBody, { clearProps: 'all' });
+        }
+    });
+
     // ── Initial setup ──
     // Cards sit absolutely inside the container, stacked.
     // Only the first card is visible; all others start below (yPercent 100 = off-screen down).
@@ -44,6 +53,12 @@ export function initStackingCards(selector = '.stack-card') {
             filter: 'blur(0px)',
             opacity: 1,
         });
+        
+        // Ensure card body is visible
+        const cardBody = card.querySelector('.stack-card__body');
+        if (cardBody) {
+            gsap.set(cardBody, { opacity: 1, y: 0 });
+        }
     });
 
     // ── Pin the container for (N-1) screens of scroll ──

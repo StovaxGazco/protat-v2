@@ -21,6 +21,7 @@ export function initCollectionNav() {
     let currentFilter = 'all';
     let visibleCards = Array.from(cards);
     let stackingTrigger = null;
+    let scrollTrackingTrigger = null;
 
     // ── Build Side Navigation ──
     function buildNav() {
@@ -45,14 +46,22 @@ export function initCollectionNav() {
 
     // ── Setup Scroll Tracking ──
     function setupScrollTracking() {
+        // Kill existing scroll tracking
+        if (scrollTrackingTrigger) {
+            scrollTrackingTrigger.kill();
+            scrollTrackingTrigger = null;
+        }
+
         const container = document.querySelector('.cards-container');
         if (!container || !visibleCards.length) return;
 
-        ScrollTrigger.create({
+        // Calculate scroll distance (same as stacking.js)
+        const scrollDistance = window.innerHeight * (visibleCards.length - 1) * 0.4;
+
+        scrollTrackingTrigger = ScrollTrigger.create({
             trigger: container,
             start: 'top top',
-            end: 'bottom bottom',
-            scrub: true,
+            end: `+=${scrollDistance}`,
             onUpdate: (self) => {
                 const progress = self.progress;
                 const cardIndex = Math.floor(progress * visibleCards.length);
@@ -73,13 +82,17 @@ export function initCollectionNav() {
 
     // ── Jump to Specific Card ──
     function jumpToCard(index) {
-        const container = document.querySelector('.cards-container');
-        if (!container) return;
+        if (!scrollTrackingTrigger) return;
 
-        // Calculate scroll position for that card
-        // Each card takes 0.4 viewport heights
-        const containerTop = container.getBoundingClientRect().top + window.scrollY;
-        const targetScroll = containerTop + (index * window.innerHeight * 0.4);
+        // Calculate target scroll position within the pinned section
+        // The ScrollTrigger starts at 'top top' and has a calculated scroll distance
+        const start = scrollTrackingTrigger.start;
+        const end = scrollTrackingTrigger.end;
+        const totalDistance = end - start;
+        
+        // Each card takes a fraction of the total scroll distance
+        const cardProgress = index / (visibleCards.length - 1);
+        const targetScroll = start + (totalDistance * cardProgress);
         
         gsap.to(window, {
             scrollTo: targetScroll,
