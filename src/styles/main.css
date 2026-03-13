@@ -741,6 +741,115 @@ em {
   color: var(--color-text);
 }
 
+/* Collection Filters */
+.collection-filters {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-stone);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-amber);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out-expo);
+}
+
+.filter-btn:hover {
+  border-color: var(--color-amber);
+  color: var(--color-text);
+}
+
+.filter-btn.active {
+  border-color: var(--color-amber);
+  color: var(--color-bg);
+  background: var(--color-amber);
+}
+
+/* Collection Side Navigation */
+.collection-nav {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: rgba(14, 13, 12, 0.95);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out-expo);
+}
+
+.collection-nav.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.collection-nav__header {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.collection-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.collection-nav__item {
+  padding: 0.5rem 0.75rem;
+  color: var(--color-stone);
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.collection-nav__item:hover {
+  background: rgba(200, 121, 65, 0.1);
+  color: var(--color-amber);
+}
+
+.collection-nav__item.active {
+  background: rgba(200, 121, 65, 0.15);
+  color: var(--color-amber);
+  font-weight: 600;
+}
+
 .cards-container {
   position: relative;
   height: 100vh;

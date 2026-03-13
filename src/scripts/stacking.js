@@ -10,9 +10,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function initStackingCards() {
+let stackingTrigger = null;
+
+export function initStackingCards(selector = '.stack-card') {
+    // Kill existing animation if rebuilding
+    if (stackingTrigger) {
+        stackingTrigger.kill();
+        stackingTrigger = null;
+    }
+
     const container = document.querySelector('.cards-container');
-    const cards = gsap.utils.toArray('.stack-card');
+    const cards = gsap.utils.toArray(selector).filter(card => {
+        // Only include visible cards (not display:none)
+        return window.getComputedStyle(card).display !== 'none';
+    });
     const numCards = cards.length;
 
     if (!container || !numCards) return;
@@ -29,12 +40,15 @@ export function initStackingCards() {
             height: '100%',
             zIndex: i + 1, // later cards on top
             yPercent: i === 0 ? 0 : 100, // card 0 visible, rest start below
+            scale: 1,
+            filter: 'blur(0px)',
+            opacity: 1,
         });
     });
 
     // ── Pin the container for (N-1) screens of scroll ──
-    // Reduced from 1.0 to 0.6 viewport heights per card for faster scrolling
-    const scrollDistance = window.innerHeight * (numCards - 1) * 0.6;
+    // Reduced to 0.4 viewport heights per card for faster scrolling
+    const scrollDistance = window.innerHeight * (numCards - 1) * 0.4;
 
     const mainTl = gsap.timeline({
         scrollTrigger: {
@@ -45,8 +59,14 @@ export function initStackingCards() {
             pin: true,
             pinSpacing: true,
             anticipatePin: 1,
+            onRefreshInit: self => {
+                stackingTrigger = self;
+            }
         },
     });
+
+    // Store the trigger reference
+    stackingTrigger = mainTl.scrollTrigger;
 
     // ── For each card transition ──
     // Divide the total timeline (0 → 1) into (N-1) equal segments.
@@ -82,15 +102,27 @@ export function initStackingCards() {
         );
 
         // Animate the next card's text content in with a slight offset
-        mainTl.from(
-            nextCard.querySelector('.stack-card__body'),
-            {
-                y: 40,
-                opacity: 0,
-                duration: segDuration * 0.6,
-                ease: 'expo.out',
-            },
-            segStart + segDuration * 0.3
-        );
+        const cardBody = nextCard.querySelector('.stack-card__body');
+        if (cardBody) {
+            mainTl.from(
+                cardBody,
+                {
+                    y: 40,
+                    opacity: 0,
+                    duration: segDuration * 0.6,
+                    ease: 'expo.out',
+                },
+                segStart + segDuration * 0.3
+            );
+        }
+    }
+
+    return stackingTrigger;
+}
+
+export function destroyStackingCards() {
+    if (stackingTrigger) {
+        stackingTrigger.kill();
+        stackingTrigger = null;
     }
 }

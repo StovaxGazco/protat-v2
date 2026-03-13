@@ -376,10 +376,26 @@
     <div class="stacking-header reveal-up">
       <div class="section-label">Notre Collection</div>
       <h2 class="stacking-title">Des Flammes<br/><em>pour chaque intérieur</em></h2>
+      
+      <!-- Category Filter -->
+      <div class="collection-filters">
+        <button class="filter-btn active" data-filter="all">Tous les Produits</button>
+        <button class="filter-btn" data-filter="wood">Poêles à Bois</button>
+        <button class="filter-btn" data-filter="electric">Poêles Électriques</button>
+      </div>
     </div>
+    
+    <!-- Side Navigation -->
+    <nav class="collection-nav" id="collection-nav">
+      <div class="collection-nav__header">Navigation</div>
+      <ul class="collection-nav__list" id="collection-nav-list">
+        <!-- Generated dynamically by JavaScript -->
+      </ul>
+    </nav>
+    
     <div class="cards-container" id="cards-container">
 
-      <div class="stack-card" data-index="0">
+      <div class="stack-card" data-index="0" data-category="wood" data-product-name="Studio">
         <div class="stack-card__bg">
           <iframe
             class="stack-card__video lazy-video"
@@ -405,7 +421,7 @@ intègrent les meilleures techniques de Stovax.</p>
         </div>
       </div>
 
-      <div class="stack-card" data-index="1">
+      <div class="stack-card" data-index="1" data-category="wood" data-product-name="Riva2">
         <div class="stack-card__bg">
           <iframe
             class="stack-card__video lazy-video"
@@ -427,7 +443,7 @@ intègrent les meilleures techniques de Stovax.</p>
         </div>
       </div>
 
-      <div class="stack-card" data-index="2">
+      <div class="stack-card" data-index="2" data-category="wood" data-product-name="Studio Air">
         <div class="stack-card__bg">
           <iframe
             class="stack-card__video lazy-video"
@@ -448,7 +464,7 @@ intègrent les meilleures techniques de Stovax.</p>
         </div>
       </div>
 
-      <div class="stack-card" data-index="3">
+      <div class="stack-card" data-index="3" data-category="wood" data-product-name="Futura">
         <div class="stack-card__bg">
           <iframe
             class="stack-card__video lazy-video"
@@ -469,7 +485,7 @@ intègrent les meilleures techniques de Stovax.</p>
         </div>
       </div>
 
-      <div class="stack-card" data-index="4">
+      <div class="stack-card" data-index="4" data-category="wood" data-product-name="Vogue">
         <div class="stack-card__bg">
           <iframe
             class="stack-card__video lazy-video"
@@ -490,7 +506,7 @@ intègrent les meilleures techniques de Stovax.</p>
         </div>
       </div>
 
-      <div class="stack-card" data-index="5">
+      <div class="stack-card" data-index="5" data-category="wood" data-product-name="Huntingdon">
         <div class="stack-card__bg">
           <iframe
             class="stack-card__video lazy-video"

@@ -3,6 +3,7 @@ import './styles/main.css';
 import { initHero } from './scripts/hero.js';
 import { initHeroVideo } from './scripts/hero-video.js';
 import { initStackingCards } from './scripts/stacking.js';
+import { initCollectionNav } from './scripts/collection-nav.js';
 import { initReveals } from './scripts/reveals.js';
 import { initLazyVideos } from './scripts/lazy-videos.js';
 // import { initProducts } from './scripts/products.js'; // Disabled - now using static installations
@@ -22,6 +23,9 @@ initReveals();
 
 // ── Stacking cards ──
 initStackingCards();
+
+// ── Collection navigation & filtering ──
+initCollectionNav();
 
 // ── Lazy video loading (viewport-based playback) ──
 const { players: lazyVideoPlayers } = initLazyVideos('.lazy-video', {
